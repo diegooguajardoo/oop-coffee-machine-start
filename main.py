@@ -16,5 +16,7 @@ while on:
         coffee_maker.report()
     else:
         drink = menu.find_drink(choice)
-        print(drink)
-
+        if coffee_maker.is_resource_sufficient(drink):
+            coins = input("Insert coins.")
+            if money_machine.make_payment(coins):
+                coffee_maker.make_coffee(drink)
