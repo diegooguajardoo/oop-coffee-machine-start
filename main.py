@@ -4,17 +4,17 @@ from money_machine import MoneyMachine
 on = True
 
 menu = Menu()
-money = MoneyMachine()
-machine = CoffeeMaker()
+money_machine = MoneyMachine()
+coffee_maker = CoffeeMaker()
 
 while on:
-    choice = input("What would you like: (espresso/cappuccino/latte/)")
+    options = menu.get_items()
+    choice = input(f"What would you like: ({options}): ")
     if choice == "off":
-        quit()
+        on = False
     elif choice == "report":
-        print(machine.report())
-    elif choice == "espresso":
-        item = MenuItem(name="espresso")
-        print(item)
-    on = False
+        coffee_maker.report()
+    else:
+        drink = menu.find_drink(choice)
+        print(drink)
 
